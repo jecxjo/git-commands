@@ -71,8 +71,13 @@ function release() {
 
 function complete() {
   if [[ "${CURRENT}" == "feature/"* || "${CURRENT}" == "bug/"* ]]; then
-    echo "Completing ${CURRENT}"
+    echo "Getting latest ${DEVELOP}"
+    git checkout ${DEVELOP}
+    git pull
+    echo "Rebasing ${CURRENT}"
+    git checkout ${CURRENT}
     git rebase -i ${DEVELOP}
+    echo "Merging into ${DEVELOP}"
     git checkout ${DEVELOP}
     git merge --no-ff ${CURRENT}
     git branch -d ${CURRENT}
