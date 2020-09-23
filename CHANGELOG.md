@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Added git oneflow (Commands to do OneFlow model)
+- Added git since (Commits since date)
+- Added git refresh (Pull and rebased while keeping changes)
+- Added git delete-merged (Delete only merged branches)
+- Added git delta (Show files changed from another branch)
+- Added git show-merged (Show merged branches)
+- Added git show-unmerged (Show unmerged branches)
+- Added git root (Show root path)
 
 ## [1.0.0] - 2020-09-23
 ### Added

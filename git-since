@@ -1,0 +1,10 @@
+#!/bin/env bash
+
+: ${SINCE:='last week'}
+
+if [ $? -gt 0 ]; then
+  SINCE=$1
+fi
+
+echo "==== Commits Since ${SINCE} ===="
+git log --pretty='%an - %s' --after="${SINCE}"
