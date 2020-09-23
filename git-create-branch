@@ -1,0 +1,14 @@
+#!/bin/env bash
+
+if [ $# -ne 1 ]; then
+  echo "$0: fatal: Needs branch name"
+  exit 99
+fi
+
+BRANCH=$1
+REMOTE=origin
+
+git push $REMOTE HEAD:refs/heads/$BRANCH
+git fetch $REMOTE
+git checkout --track -b $BRANCH $REMOTE/$BRANCH
+exit $?

@@ -1,0 +1,10 @@
+#!/bin/env bash
+
+HEAD=$(git rev-parse --abbrev-ref HEAD)
+
+if [ "x${HEAD}" == "x" ]; then
+  echo "$0: fatal: No HEAD set"
+  exit 99
+fi
+
+git push -u origin ${HEAD}
