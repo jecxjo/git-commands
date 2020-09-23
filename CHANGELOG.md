@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Changed
 - Set all scripts to use /usr/bin/env bash
+- oneflow pulls latest before completing
 
 ## [1.1.0] - 2020-09-23
 ### Added
@@ -25,5 +26,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added git push-origin (Pushes head to origin)
 - Added git rinse (Cleans branch and submodules)
 - Added git graph (Shows pretty log graph)
-- Added git create-branch (Creats branch, pushes to remote)
-- Added git delete-remote (Deletes remote banch)
+- Added git create-branch (Creates branch, pushes to remote)
+- Added git delete-remote (Deletes remote branch)
