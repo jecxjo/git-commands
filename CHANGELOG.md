@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Added redo to gitignore
+- Added git local-commits (Show commits not yet pushed to remote)
 
 ### Changed
 - Set all scripts to use /usr/bin/env bash
