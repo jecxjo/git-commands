@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 
 if [ $# -ne 1 ]; then
   echo "$0: fatal: Needs branch name"

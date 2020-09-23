@@ -1,3 +1,3 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 
 git branch --no-color --no-merged | egrep -v "(^\*|master|develop|trunk)" | tr -d ' '
