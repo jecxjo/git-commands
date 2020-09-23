@@ -1,0 +1,121 @@
+#!/bin/env bash
+
+set -e
+
+: ${DEVELOP:=$(git config --get git-commands.oneflow.develop)}
+: ${TRUNK:=$(git config --get git-commands.oneflow.trunk)}
+: ${CURRENT:=$(git symbolic-ref --short HEAD)}
+
+if [ -z "${DEVELOP}" ]; then
+  DEVELOP=develop
+fi
+
+if [ -z "${TRUNK}" ]; then
+  TRUNK=trunk
+fi
+
+function help() {
+  cat<<EOF
+usage: git oneflow <cmd> [<options>]
+
+Commands:
+    feature <branch>    Creates a feature branch from ${DEVELOP}
+
+    bug <branch>        Create a bug branch from ${DEVELOP}
+
+    release <version>   Creates a release branch from ${DEVELOP}, tags and moves ${TRUNK} to tag
+
+    complete            Completes feature/bug release and merge to ${DEVELOP}
+
+Config:
+    git-commands.oneflow.develop   Development branch name
+    git-commands.oneflow.trunk     Production branch name
+EOF
+}
+
+function feature() {
+  if [ -z "$1" ]; then
+    echo "$0: error: Need branch name"
+    exit 1
+  fi
+
+  feature="$1"
+
+  echo "Creating feature branch ${feature}"
+  git checkout -b "feature/${feature}" ${DEVELOP}
+}
+
+function bug() {
+  if [ -z "$1" ]; then
+    echo "$0: error: Need branch name"
+    exit 1
+  fi
+
+  bug="$1"
+
+  echo "Creating bug branch ${bug}"
+  git checkout -b "bug/${bug}" ${DEVELOP}
+}
+
+function release() {
+  if [ -z "$1" ]; then
+    echo "$0: error: Need branch name"
+    exit 1
+  fi
+
+  release="$1"
+
+  echo "Creating release branch ${release}"
+  git checkout -b "release/${release}" ${DEVELOP}
+}
+
+function complete() {
+  if [[ "${CURRENT}" == "feature/"* || "${CURRENT}" == "bug/"* ]]; then
+    echo "Completing ${CURRENT}"
+    git rebase -i ${DEVELOP}
+    git checkout ${DEVELOP}
+    git merge --no-ff ${CURRENT}
+    git branch -d ${CURRENT}
+    exit 0
+  fi
+
+  if [[ "${CURRENT}" == "release/"* ]]; then
+    VERSION="${CURRENT##release/}"
+    echo "Tagging version $VERSION"
+    git tag $VERSION
+    git checkout ${DEVELOP}
+    echo "Merging to ${DEVELOP}"
+    git merge ${CURRENT}
+    echo "Moving ${TRUNK} to ${VERSION}"
+    git checkout ${TRUNK}
+    git merge --ff-only ${VERSION}
+    git branch -d ${CURRENT}
+    exit 0
+  fi
+}
+
+case $1 in
+  "feature")
+    shift
+    feature $1
+    ;;
+
+  "bug")
+    shift
+    bug $1
+    ;;
+
+  "release")
+    shift
+    release $1
+    ;;
+
+  "complete")
+    shift
+    complete
+    ;;
+
+  *)
+    help
+    ;;
+esac
