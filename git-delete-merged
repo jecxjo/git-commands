@@ -1,0 +1,13 @@
+#!/bin/env bash
+
+if [[ "$@" == *"--help" ]]; then
+  echo "usage: git delete-merge <--dry-run>"
+  exit 0
+fi
+
+if [ "$1" == "--dry-run" ]; then
+  echo "Branches that would be deleted"
+  git branch --merged| egrep -v "(^\*|master|develop|trunk)"
+else
+  git branch --merged| egrep -v "(^\*|master|develop|trunk)" | xargs git branch -d
+fi
