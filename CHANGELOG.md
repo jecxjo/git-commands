@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added git delta (Show files changed from another branch)
 - Added git show-merged (Show merged branches)
 - Added git show-unmerged (Show unmerged branches)
+- Added git root (Show root path)
 
 ## [1.0.0] - 2020-09-23
 ### Added
