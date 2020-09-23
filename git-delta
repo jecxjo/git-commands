@@ -1,0 +1,15 @@
+#!/bin/env bash
+
+: ${BRANCH:=develop}
+: ${FILTER=ACM}
+
+if [ $# -eq 1 ]; then
+  BRANCH=$1
+fi
+
+if [ $# -eq 2 ]; then
+  BRANCH=$1
+  FILTER=$2
+fi
+
+git diff --name-only --diff-filter=$FILTER $BRANCH
