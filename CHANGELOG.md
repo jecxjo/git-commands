@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Added git oneflow (Commands to do OneFlow model)
 - Added git since (Commits since date)
+- Added git refresh (Pull and rebased while keeping changes)
 
 ## [1.0.0] - 2020-09-23
 ### Added
