@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Set all scripts to use /usr/bin/env bash
 - oneflow pulls latest before completing
 - Set permissions to +x
+- Using test in install.do
 
 ## [1.1.0] - 2020-09-23
 ### Added

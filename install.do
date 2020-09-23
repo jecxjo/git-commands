@@ -4,7 +4,7 @@ exec >&2
 : ${HOME:=NONE}
 : ${INSTALLDIR:=$HOME/.git-commands}
 
-if [ "$HOME" == "NONE" ]; then
+if test "$HOME" = "NONE"; then
   echo "$0: fatal: set HOME before trying to install"
   exit 99
 fi
