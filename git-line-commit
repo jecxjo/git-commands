@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+test $# -ne 2 && echo "usage: git line-commit <file> <line number>" && exit 1
+
+git blame "$1" | awk -v r=$2 'NR==r{gsub(/\^/, " ", $1); printf("git show %s", $1);}' | sh
