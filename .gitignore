@@ -1,3 +1,4 @@
 .do_built
 .do_built.dir
 *.did
+.redo
