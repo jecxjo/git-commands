@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Added git churn (Show changes per file)
 - Added git commit-count (Number of commits in given branch)
+- Added git commits-per-day (Average commits per day)
 
 ## [1.2.0] - 2020-09-23
 ### Added
