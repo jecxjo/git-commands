@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Added git commands (Displays help and usage for all commands)
 
+### Changed
+- Fixed since to use optional date arg
+
 ## [1.3.0] - 2020-09-23
 ### Added
 - Added git churn (Show changes per file)
