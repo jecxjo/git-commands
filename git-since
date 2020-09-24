@@ -8,7 +8,7 @@
 
 : ${SINCE:='last week'}
 
-if [ $? -gt 0 ]; then
+if [ $# -gt 0 ]; then
   SINCE=$1
 fi
 
