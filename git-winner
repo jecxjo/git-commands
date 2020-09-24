@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+#
+# winner - Report most commits and LOC per dev
+#
 
 # Copyright © 2008 Garry C. Dolley
 # https://github.com/up_the_irons/git-winner

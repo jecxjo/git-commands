@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# commits-per-day: Average commits per day
+# commits-per-day - Average commits per day
 #
 
 PERDAY=$(git log --format=format:"%cd" --date=short --no-merges --all | uniq -c | awk '{ total += $1; count++ } END { print total/count }')

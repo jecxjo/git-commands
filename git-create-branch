@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+#
+# create-branch - Create branch, pushes to remote
+#
+# $ git create-branch <branch name>
+#
 
 if [ $# -ne 1 ]; then
   echo "$0: fatal: Needs branch name"

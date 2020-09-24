@@ -1,3 +1,6 @@
 #!/usr/bin/env bash
+#
+# show-merged - List branches that have been merged
+#
 
 git branch --no-color --merged | egrep -v "(^\*|master|develop|trunk)" | tr -d ' '

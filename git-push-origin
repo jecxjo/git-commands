@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+#
+# push-origin - Push new branch to origin
+#
 
 HEAD=$(git rev-parse --abbrev-ref HEAD)
 

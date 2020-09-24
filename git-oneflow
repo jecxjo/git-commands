@@ -1,4 +1,14 @@
 #!/usr/bin/env bash
+#
+# oneflow - Commands for follwoing OneFlow workflow
+#
+# $ git oneflow feature new-feature
+# $ git oneflow bug new-bug
+# $ git oneflow release 1.2.3
+# $ git oneflow complete
+#
+# For more info: git oneflow
+#
 
 set -e
 

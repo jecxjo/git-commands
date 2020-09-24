@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+#
+# line-commit - Show commit based-on line of file
+#
+# $ git line-commit CHANGELOG.md 12
+#
 
 test $# -ne 2 && echo "usage: git line-commit <file> <line number>" && exit 1
 

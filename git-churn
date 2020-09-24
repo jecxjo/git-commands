@@ -5,5 +5,6 @@
 # $ git churn
 # $ git churn some_dir
 # $ git churn --since='1 month ago'
+#
 
 git log --all -M -C --name-only --format='format:' "$@" | sort | grep -v '^$' | uniq -c | sort -n | awk 'BEGIN {print "count\tfile"} {print $1 "\t" $2}'

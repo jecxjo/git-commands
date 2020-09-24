@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# commit-count: Number of commits on given branch
+# commit-count - Number of commits on given branch
 #
 
 git rev-list HEAD --count

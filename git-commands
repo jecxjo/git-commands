@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+#
+#  commands - Help on custom git commands
+#
+#  $ git commands
+#  $ git commands new
+#
+
+CMDSDIR=$(dirname "${BASH_SOURCE[0]}")
+
+function usage() {
+  cat <<EOF
+usage: git commands <command name>
+
+Version: 1.3.0
+
+Commands:
+  churn               Show changes per file
+  commit-count        Number of commits in a given branch
+  commits-per-day     Average commits per day
+  create-branch       Create branch, pushes to remote
+  delete-merged       Delete all local branches that are merged
+  delete-remote       Delete remote branches
+  delta               Show files changed from another branch
+  file-version        Show a file based on a commit/branch/ref
+  graph               Show graph of commits
+  info                Report lots of info about repo
+  line-commit         Show commit based on line of file
+  local-commits       Show commits not yet pushed to remote
+  new                 Create a new repo with default files and branches
+  oneflow             Commands for following OneFlow workflow
+  push-origin         Push new branch to origin
+  refresh             Pull and rebase to a given branch while keeping changes
+  rinse               Clean branch and submodules
+  root                Root directory of git repo
+  show-merged         Report merged branches
+  show-unmerged       Report unmerged branches
+  since               Commits since a given date
+  winner              Report most commits and LOC per dev
+EOF
+}
+
+function docs() {
+  FILE="${CMDSDIR}/git-$1"
+  test ! -e ${FILE} && echo "$0: error: No git command $1" && exit 1
+
+  cat ${FILE} | awk '/^#/,!/^#/;!/^#/{exit}'
+}
+
+test $# -eq 0 && usage && exit 0
+test $# -eq 1 && docs $1 && exit 0
+
+usage
