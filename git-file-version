@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+case $# in
+  1)
+    git show HEAD~1:$1
+    ;;
+  2)
+    git show $1:$2
+    ;;
+  *)
+    echo "usage: git file-version [<ref>] <file-path>"
+    exit 1
+    ;;
+esac
+
