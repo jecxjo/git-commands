@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+#
+# delete-merged - Delete all local branches that are merged
+#
+# $ git delete-merged <--dry-run>
+#
 
 if [[ "$@" == *"--help" ]]; then
   echo "usage: git delete-merge <--dry-run>"

@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+#
+# since - List commits since a given time
+#
+# $ git since
+# $ git since "5 hours ago"
+#
 
 : ${SINCE:='last week'}
 

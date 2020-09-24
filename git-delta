@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+#
+# delta - Show files changed from another branch
+#
+# $ git delta trunk
+# $ git delta trunk ACM
+#
 
 : ${BRANCH:=develop}
 : ${FILTER=ACM}

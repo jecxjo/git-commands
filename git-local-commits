@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+#
+# local-commits - Show commits not yet pushed to remote
+#
 
 : ${REF:=$(git symbolic-ref HEAD)}
 : ${BRANCH:=${REF#refs/heads/}}

@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+#
+# delete-remote - Delete remote branches
+#
+# $ git delete-remote example
+# $ git delete-remote origin example
+#
 
 if [[ "$@" == *"--help"* ]]; then
   echo "usage: git delete-remote [<remote>] <branch>"

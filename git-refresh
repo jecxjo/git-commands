@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+#
+# refresh - Pull and rebase to a given branch while keeping changes
+#
+# $ git refresh trunk
+#
 
 #
 # FROM https://dev.to/shobhit/git-refresh-4hn - Shobhit Puri

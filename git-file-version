@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+#
+# file-version - Show a file based on a commit/branch/ref
+#
+# $ git file-version 1234567 CHANGELOG.md
+# $ git file-version trunk CHANGELOG.md
+#
 
 case $# in
   1)

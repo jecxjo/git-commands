@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+#
+# rinse - Clean branch and submodules
+#
 
 git reset --hard
 git submodule foreach --recursive 'git checkout -- . || :'

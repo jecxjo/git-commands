@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
+#
+# info - Report lots of info abou repo
+#
+# $ git info
+# $ git info --no-config
+# $ git info --color
+#
 
 GREEN="$(tput setaf 2)"
 NORMAL="$(tput sgr0)"
