@@ -2,18 +2,37 @@
 #
 # create-branch - Create branch, pushes to remote
 #
-# $ git create-branch <branch name>
+# $ git create-branch new-branch
+# $ git create-branch new-branch old-branch
+# $ git create-branch new-branch old-branch origin
 #
 
-if [ $# -ne 1 ]; then
-  echo "$0: fatal: Needs branch name"
-  exit 99
-fi
 
-BRANCH=$1
-REMOTE=origin
+case $# in
+  1)
+    BRANCH=$1
+    START=HEAD
+    REMOTE=origin
+    ;;
+  2)
+    BRANCH=$1
+    START=$2
+    REMOTE=origin
+    ;;
+  3)
+    BRANCH=$1
+    START=$2
+    REMOTE=$3
+    ;;
+  *)
+    echo "usage: git create-branch <branch name> [<starting point>] [<remote]>"
+    exit 99
+    ;;
+esac
 
-git push $REMOTE HEAD:refs/heads/$BRANCH
+
+
+git push $REMOTE $START:refs/heads/$BRANCH
 git fetch $REMOTE
 git checkout --track -b $BRANCH $REMOTE/$BRANCH
 exit $?
