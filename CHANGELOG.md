@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ### Added
 - Added git commands (Displays help and usage for all commands)
+- Archive build rule
+- Clean build rule
 
 ### Changed
 - Fixed since to use optional date arg
