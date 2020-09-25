@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Fixed since to use optional date arg
 - Fixed var name in refresh
+- Gave options to create-branch
 
 ## [1.3.0] - 2020-09-23
 ### Added
