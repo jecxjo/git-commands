@@ -13,7 +13,7 @@ remoteBranch=$1
 test -z "$remoteBranch" && echo "ERROR: Please provide the source remote branch." 1>&2 && exit 1
 
 # Find which is your current branch
-if currenBranch=$(git symbolic-ref --short -q HEAD)
+if currentBranch=$(git symbolic-ref --short -q HEAD)
 then
   echo On branch "$currentBranch"
   echo "Pulling updates from the remote branch $remoteBranch ..."
