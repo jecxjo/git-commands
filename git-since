@@ -4,13 +4,35 @@
 #
 # $ git since
 # $ git since "5 hours ago"
+# $ git since "5 hours ago" master
+# $ git since "5 hours ago" master "John Doe"
 #
 
 : ${SINCE:='last week'}
+: ${AUTHOR:=$(git config --get user.name)}
+: ${BRANCH:='HEAD'}
 
-if [ $# -gt 0 ]; then
-  SINCE=$1
-fi
 
-echo "==== Commits Since ${SINCE} ===="
-git log --pretty='%an - %s' --after="${SINCE}"
+case $# in
+  0)
+    ;;
+  1)
+    SINCE="$1"
+    ;;
+  2)
+    SINCE="$1"
+    BRANCH="$2"
+    ;;
+  3)
+    SINCE="$1"
+    BRANCH="$2"
+    AUTHOR="$3"
+    ;;
+  *)
+    echo "usage: git since [<args>]"
+    exit 1
+    ;;
+esac
+
+echo "==== Commits in ${BRANCH} since ${SINCE} by ${AUTHOR} ===="
+git log --pretty='%an - %s' --after="${SINCE}" --author="${AUTHOR}" $BRANCH
