@@ -35,4 +35,4 @@ case $# in
 esac
 
 echo "==== Commits in ${BRANCH} since ${SINCE} by ${AUTHOR} ===="
-git log --pretty='%an - %s' --after="${SINCE}" --author="${AUTHOR}" $BRANCH
+git log --pretty='%h %an - %s' --after="${SINCE}" --author="${AUTHOR}" $BRANCH

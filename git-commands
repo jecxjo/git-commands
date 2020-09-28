@@ -12,7 +12,7 @@ function usage() {
   cat <<EOF
 usage: git commands <command name>
 
-Version: 1.4.1
+Version: 1.4.2
 
 Commands:
   churn               Show changes per file
