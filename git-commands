@@ -23,6 +23,7 @@ Commands:
   delete-remote       Delete remote branches
   delta               Show files changed from another branch
   file-version        Show a file based on a commit/branch/ref
+  find                Searches commit strings
   graph               Show graph of commits
   info                Report lots of info about repo
   line-commit         Show commit based on line of file
