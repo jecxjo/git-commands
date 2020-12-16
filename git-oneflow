@@ -14,6 +14,7 @@ set -e
 
 : ${DEVELOP:=$(git config --get git-commands.oneflow.develop)}
 : ${TRUNK:=$(git config --get git-commands.oneflow.trunk)}
+: ${NO_PUSH:=$(git config --get git-commands.oneflow.no-push)}
 : ${CURRENT:=$(git symbolic-ref --short HEAD)}
 
 if [ -z "${DEVELOP}" ]; then
@@ -29,17 +30,18 @@ function help() {
 usage: git oneflow <cmd> [<options>]
 
 Commands:
-    feature <branch>    Creates a feature branch from ${DEVELOP}
+    feature <branch>        Creates a feature branch from ${DEVELOP}
 
-    bug <branch>        Create a bug branch from ${DEVELOP}
+    bug <branch>            Create a bug branch from ${DEVELOP}
 
-    release <version>   Creates a release branch from ${DEVELOP}, tags and moves ${TRUNK} to tag
+    release <version>       Creates a release branch from ${DEVELOP}, tags and moves ${TRUNK} to tag
 
-    complete            Completes feature/bug release and merge to ${DEVELOP}
+    complete [<--no-push>]  Completes feature/bug release and merge to ${DEVELOP}
 
 Config:
     git-commands.oneflow.develop   Development branch name
     git-commands.oneflow.trunk     Production branch name
+    git-commands.oneflow.no-push   Do not push / delete when complete
 EOF
 }
 
@@ -80,6 +82,10 @@ function release() {
 }
 
 function complete() {
+  if [ "$1" = "--no-push" ]; then
+    NO_PUSH=1
+  fi
+
   if [[ "${CURRENT}" == "feature/"* || "${CURRENT}" == "bug/"* ]]; then
     echo "Getting latest ${DEVELOP}"
     git checkout ${DEVELOP}
@@ -87,10 +93,14 @@ function complete() {
     echo "Rebasing ${CURRENT}"
     git checkout ${CURRENT}
     git rebase -i ${DEVELOP}
-    echo "Merging into ${DEVELOP}"
-    git checkout ${DEVELOP}
-    git merge --no-ff ${CURRENT}
-    git branch -d ${CURRENT}
+    if [[ "${NO_PUSH}" == "1" ]]; then
+      echo "NO_PUSH enabled, merge to ${DEVELOP} manually and delete branch"
+    else
+      echo "Merging into ${DEVELOP}"
+      git checkout ${DEVELOP}
+      git merge --no-ff ${CURRENT}
+      git branch -d ${CURRENT}
+    fi
     exit 0
   fi
 
@@ -127,7 +137,7 @@ case $1 in
 
   "complete")
     shift
-    complete
+    complete $1
     ;;
 
   *)
