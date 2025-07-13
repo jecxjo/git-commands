@@ -1,5 +1,7 @@
 # git-commands
 
+**NOTE** LEAVING GITHUB!!! This project now lives at https://git.sh0.xyz/git-commands.git/
+
 A set of git scripts I use regularly.
 
 ## churn
